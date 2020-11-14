@@ -34,8 +34,8 @@ steps:
 
 # Test with phpunit
 
-- script: ./phpunit
-  displayName: 'Run tests with phpunit'
+# - script: ./phpunit
+#   displayName: 'Run tests with phpunit'
 
 
 # Retain the PHP app with the build record
