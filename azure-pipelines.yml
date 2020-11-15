@@ -6,6 +6,9 @@
 trigger:
 - master
 
+
+# Use a specific PHP version
+
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -22,5 +25,23 @@ steps:
     php -version
   displayName: 'Use PHP version $(phpVersion)'
 
+
+# Install dependencies
+
 # - script: composer install --no-interaction --prefer-dist
 #   displayName: 'composer install'
+
+
+# Test with phpunit
+
+# - script: ./phpunit
+#   displayName: 'Run tests with phpunit'
+
+
+# Retain the PHP app with the build record
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(system.defaultWorkingDirectory)'
+    includeRootFolder: false
+- task: PublishBuildArtifacts@1
