@@ -292,4 +292,23 @@
 		}
 		return $message;
 	}
+
+	function chiffrement($var){
+		$sel="salut a tous";
+		$var=$sel.$var.$sel;
+		$var=hash('sha512', $var);
+		return $var;
+	}
+
+	function insertUtilisateur($nom,$pwd){
+		include '../connexion.php';
+		$req="INSERT INTO utilisateur(id_utilisateur, pseudo_utilisateur, pwd_utilisateur) VALUES (null,'$nom','$pwd')";
+		if (mysqli_query($co, $req)) {
+	    echo "utilisateur ajouté<br>";
+		} 
+		else {
+	    echo "Error: " . $req . "<br>" . mysqli_error($co);
+		}
+		mysqli_close($co);
+	}
 ?>
