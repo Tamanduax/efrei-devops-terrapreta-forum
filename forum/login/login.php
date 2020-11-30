@@ -17,7 +17,7 @@ session_start();
 		FROM utilisateur");
 		$find=false;
 		while($donnee=(mysqli_fetch_assoc($req))){
-			if($donnee["pseudo_utilisateur"]==$_POST["login"]&&$donnee["pwd_utilisateur"]==$_POST["password"]){
+			if($donnee["pseudo_utilisateur"]==$_POST["login"]&&$donnee["pwd_utilisateur"]==chiffrement($_POST["password"])){
 				$_SESSION["utilisateur"]=$donnee["id_utilisateur"];
 				$find=true;
 			}
@@ -33,6 +33,7 @@ session_start();
 	<input class='Iconnexion' type="text" required="required" name="login" placeholder="login"/>
 	<input class='Iconnexion' type="password" required="required" name="password" placeholder="password"/>
 	<input class='Sconnexion'type="submit"/>
+	<a href='signin.php' style='position:absolute;left:15%;top:250px;'>Créer un compte</a>
 </form>
 <?php
 	if(isset($find)){
