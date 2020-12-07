@@ -38,6 +38,7 @@ steps:
 # - script: composer install --no-interaction --prefer-dist
 #   displayName: 'composer install'
 
+# This is another comment for demonstration purpose
 
 # Test with phpunit
 
